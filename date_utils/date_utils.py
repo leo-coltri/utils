@@ -2,7 +2,7 @@ from datetime import datetime
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
-def get_yyMM_range(yyMM, day_safety):
+def get_yyMM_range(yyMM, _format, output, day_safety):
     """_summary_
 
     Args:
@@ -14,11 +14,11 @@ def get_yyMM_range(yyMM, day_safety):
     """
     yyMM = sorted(yyMM)
     if len(yyMM) == 2:
-        range_yyMM = get_date_range(yyMM[0], _format='%Y-%m-%d', output='str', day_safety=day_safety)[0], \
-            get_date_range(yyMM[1], _format='%Y-%m-%d', output='str', day_safety=day_safety)[1]
+        range_yyMM = get_date_range(yyMM[0], _format=_format, output=output, day_safety=day_safety)[0], \
+            get_date_range(yyMM[1], _format=_format, output=output, day_safety=day_safety)[1]
         return range_yyMM
     elif len(yyMM) == 1:
-        range_yyMM = get_date_range(yyMM[0], _format='%Y-%m-%d', output='str', day_safety=day_safety)[0]
+        range_yyMM = get_date_range(yyMM[0], _format=_format, output=output, day_safety=day_safety)[0]
         return range_yyMM
     else:
         return 'Please assign a valid yyMM quantity/value to output parameter'
@@ -49,5 +49,4 @@ def get_date_range(yyMM, _format='%Y-%m-%d %H:%M:%S', output='str', day_safety=0
     elif output == 'datetime':
         return month_start, month_end
     else:
-        return 'Please assgn a valid value to output paremeter' 
-
+        return 'Please assgn a valid value to output paremeter'
